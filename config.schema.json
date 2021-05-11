@@ -1,0 +1,158 @@
+{
+  "pluginAlias": "Pushcutter",
+  "headerDisplay": "Homebridge plugin for Pushcut notifications.",
+  "footerDisplay": "Please visit https://github.com/kernie66/homebridge-pushcutter for more details.",
+  "pluginType": "platform",
+  "singular": true,
+  {
+    "type": "object",
+    "properties": 
+    {
+      "name": 
+      {
+        "description": "Plugin name as displayed in the homebridge log.",
+        "type": "string",
+        "required": true,
+        "default": "Pushcutter"
+      },
+      "apiKey": 
+      {
+        "title": "Pushcut API Key",
+        "type": "string",
+        "required": true,
+        "placeholder": "API key"
+      },
+      "pcDevices": 
+      {
+        "title": "Pushcut devices (leave blank for all)",
+          "type": "string",
+          "required": false,
+          "placeholder": "device1,device2,...",
+          "description": "Device list seperated by comma - WITHOUT SPACE after comma!"
+          },        
+      "pcNotifications": 
+      {
+        "title": "Pushcut notifications",
+        "notitle": true,
+        "type": "array",
+        "items": 
+        {
+          "type": "object",
+          "properties": 
+          {
+            "name": 
+            {
+              "title": "Notification name",
+              "description": "Name of the notification switch.",
+              "type": "string",
+              "required": true
+            },
+            "pcSound": 
+            {
+              "title": "Notification sound",
+              "type": "string",
+              "default": "system",
+              "oneOf": [
+                {
+                  "title": "vibrateOnly",
+                  "enum": [
+                    "vibrateOnly"
+                  ]
+                },
+                {
+                  "title": "system",
+                  "enum": [
+                    "system"
+                  ]
+                },
+                {
+                  "title": "subtle",
+                  "enum": [
+                    "subtle"
+                  ]
+                },
+                {
+                  "title": "question",
+                  "enum": [
+                    "question"
+                  ]
+                },
+                {
+                  "title": "jobDone",
+                  "enum": [
+                    "jobDone"
+                  ]
+                },
+                {
+                  "title": "problem",
+                  "enum": [
+                    "problem"
+                  ]
+                },
+                {
+                  "title": "loud",
+                  "enum": [
+                    "loud"
+                  ]
+                },
+                {
+                  "title": "lasers",
+                  "enum": [
+                    "lasers"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "form": [
+    {
+      "type": "help",
+      "helpvalue": "<div class=\"alert alert-info\">Homebridge Pushcut Notifications</div>"
+    },
+    {
+      "key": "name",
+      "type": "text"
+    },
+    {
+      "key": "apiKey",
+      "type": "text"
+    },
+    {
+      "key": "pcDevices",
+      "type": "text"
+    },
+    {
+      "nodescription": true,
+      "notitle": false,
+      "key": "pcNotifications",
+      "title": "Notifications",
+      "type": "array",
+      "items": [
+        {
+          "type": "section",
+          "notitle": true,
+          "items": [
+            {
+              "key": "pcNotifications[]",
+              "title": "{{ 'Switch ' + $index + ' settings' }}",
+              "items": [
+                {
+		          "type": "section",
+	              "items": ["pcNotifications[].name"]
+                },
+                {
+		          "type": "section",
+	              "items": ["pcNotifications[].pcSound"]
+                }
+              ]
+	        }
+          ]
+        }
+      ]
+    }
+  ]
+}
