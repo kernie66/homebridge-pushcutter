@@ -4,6 +4,7 @@
   "footerDisplay": "Please visit https://github.com/kernie66/homebridge-pushcutter for more details.",
   "pluginType": "platform",
   "singular": true,
+  "schema":
   {
     "type": "object",
     "properties": 
@@ -20,17 +21,17 @@
         "title": "Pushcut API Key",
         "type": "string",
         "required": true,
-        "placeholder": "API key"
+        "placeholder": "Enter API key"
       },
-      "pcDevices": 
+      "devices": 
       {
         "title": "Pushcut devices (leave blank for all)",
-          "type": "string",
-          "required": false,
-          "placeholder": "device1,device2,...",
-          "description": "Device list seperated by comma - WITHOUT SPACE after comma!"
-          },        
-      "pcNotifications": 
+        "type": "string",
+        "required": false,
+        "placeholder": "device1,device2,...",
+        "description": "Device list seperated by comma - WITHOUT SPACE after comma!"
+      },        
+      "notifications": 
       {
         "title": "Pushcut notifications",
         "notitle": true,
@@ -40,14 +41,21 @@
           "type": "object",
           "properties": 
           {
-            "name": 
+            "switchName": 
             {
-              "title": "Notification name",
+              "title": "Notification switch name",
               "description": "Name of the notification switch.",
               "type": "string",
               "required": true
             },
-            "pcSound": 
+	    "notificationName":
+            {
+              "title": "Pushcut notification name",
+              "description": "Name of the Pushcut notification to use for the switch.",
+              "type": "string",
+              "required": true
+            },
+            "sound": 
             {
               "title": "Notification sound",
               "type": "string",
@@ -122,13 +130,13 @@
       "type": "text"
     },
     {
-      "key": "pcDevices",
+      "key": "devices",
       "type": "text"
     },
     {
       "nodescription": true,
       "notitle": false,
-      "key": "pcNotifications",
+      "key": "notifications",
       "title": "Notifications",
       "type": "array",
       "items": [
@@ -137,19 +145,23 @@
           "notitle": true,
           "items": [
             {
-              "key": "pcNotifications[]",
-              "title": "{{ 'Switch ' + $index + ' settings' }}",
+              "key": "notifications[]",
+              "title": "{{ 'Notification switch ' + $index + ' settings' }}",
               "items": [
                 {
-		          "type": "section",
-	              "items": ["pcNotifications[].name"]
+		  "type": "section",
+	          "items": ["notifications[].switchName"]
                 },
                 {
-		          "type": "section",
-	              "items": ["pcNotifications[].pcSound"]
+		  "type": "section",
+	          "items": ["notifications[].notificationName"]
+                },
+                {
+		  "type": "section",
+	          "items": ["notifications[].sound"]
                 }
               ]
-	        }
+	    }
           ]
         }
       ]
