@@ -12,7 +12,9 @@
   "dependencies": {
     "abort-controller": "^3.0.0",
     "homebridge-lib": "^5.1.2",
-    "got": ">=11.8.2",
+    "got": "^11.8.2",
+    "is-url-http": "^2.2.3",
+    "parse-url": "^5.0.0",
     "np": "^7.5.0"
   },
   "repository": {
