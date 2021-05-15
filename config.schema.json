@@ -4,83 +4,88 @@
   "footerDisplay": "Please visit https://github.com/kernie66/homebridge-pushcutter for more details.",
   "pluginType": "platform",
   "singular": false,
-  "schema":
-  {
+  "schema": {
     "type": "object",
-    "properties": 
-    {
-      "name": 
-      {
+    "properties": {
+      "name": {
         "description": "Plugin name as displayed in the homebridge log.",
         "type": "string",
         "required": true,
         "default": "Pushcutter"
       },
-      "useApiKey":
-      {
-        "title": "Use Pushcut API",
-        "type": "boolean",
-        "default": true
+      "api": {
+        "type": "object",
+        "properties": {
+          "selectApi": {
+            "title": "Select type of API",
+            "type": "string",
+            "default": "apiKey",
+            "oneOf": [
+              {
+                "title": "API key",
+                "enum": ["apiKey"]
+              },
+              {
+                "title": "Webhook secret",
+                "enum": ["secret"]
+              }
+            ]
+          },
+          "apiCode": {
+            "title": "Pushcut API key or Webhook secret",
+            "type": "string",
+            "placeholder": "Enter API key or secret"
+          },
+          "useCustomUrl": {
+            "title": "Use custom URL",
+            "type": "boolean"
+          },
+          "customUrl": {
+            "title": "Enter custom URL",
+            "type": "string",
+            "placeholder": "https://api.pushcut.io/v1/"
+          }
+        }  
       },
-      "apiKey": 
-      {
-        "title": "Pushcut API Key",
-        "type": "string",
-        "placeholder": "Enter API key"
-      },
-      "apiUrl":
-      {
-        "title": "Pushcut API URL",
-        "type": "string",
-        "default": "https://api.pushcut.io/v1/"
-      },
-      "devices": 
-      {
+      "devices": {
         "title": "Pushcut devices (leave blank for all)",
         "type": "string",
         "required": false,
         "placeholder": "device1,device2,...",
         "description": "Device list seperated by comma - WITHOUT SPACE after comma!"
       },        
-      "notifications": 
-      {
+      "notifications": {
         "title": "Pushcut notifications",
         "notitle": true,
         "type": "array",
-        "items": 
-        {
+        "items": {
           "type": "object",
-          "properties": 
-          {
-            "switchName": 
-            {
+          "properties": {
+            "switchName": {
               "title": "Notification switch name",
-              "description": "Name of the notification switch.",
+              "description": "Name of the notification switch in HomeKit.",
               "type": "string",
               "required": true
             },
-	          "notificationName":
-            {
+	          "notificationName": {
               "title": "Pushcut notification name",
               "description": "Name of your Pushcut notification to use for the switch.",
               "type": "string",
+              "placeholder": "Leave blank if webhook is used",
               "required": false
             },
-            "useWebhook":
-            {
+            "useWebhook": {
               "title": "Use webhook",
               "description": "Enable the use of webhook instead of API key",
               "type": "boolean",
               "default": false
             },
-            "webhook":
-            {
+            "webhook": {
               "title": "Pushcut notification webhook",
-              "description": "Webhook for the notification, when not using the API key",
+              "description": "Complete webhook for the notification, overrides the notification name",
               "type": "string"
             },
-            "sound": 
-            {
+            "sound": {
               "title": "Notification sound",
               "type": "string",
               "default": "system",
@@ -150,22 +155,33 @@
       "type": "text"
     },
     {
-      "type": "help",
-      "helpvalue": "<h6>Use the Pushcut API for quick access to the notifications.</h6><em>If the API is not used, you must provide a webhook for each notification.</em>"
-    },
-    {
-      "key": "useApiKey",
-      "type": "boolean"
-    },
-    {
-      "key": "apiKey",
-      "condition": "useApiKey",
-      "type": "text"
-    },
-    {
-      "key": "apiUrl",
-      "condition": "useApiKey",
-      "type": "text"
+      "ref": "api",
+      "type": "section",
+      "title": "Pushcut API Setup",
+      "items": [
+        {
+          "type": "help",
+          "helpvalue": "<em>If no API is used, you must provide a full webhook for each notification.</em>"
+        },
+        "api.selectApi",
+        {
+          "key": "api.apiCode",
+          "description": "Enter the API key or webhook secret.",
+          "required": true,
+          "condition": {
+            "functionBody": "return (api.selectApi==='secret')"
+          }
+        },
+        {
+          "key": "api.useCustomUrl",
+          "description": "Use a custom URL."
+        },
+        {
+          "key": "customUrl",
+          "description": "Enter the URL to use.",
+          "condition": "api.useCustomUrl"
+        }
+      ]
     },
     {
       "key": "devices",
@@ -192,12 +208,14 @@
                 },
                 {
 		              "type": "section",
-                  "condition": "useApiKey",
+                  "condition": {
+                    "functionBody": "return (notifications[].useWebhook===false"
+                  },
 	                "items": ["notifications[].notificationName"]
                 },
                 {
                   "type": "help",
-                  "helpvalue": "<h6>You can use the notification webhook directly.</h6><em>If the Pushcut API key is not used, you must provide a webhook instead.</em>"
+                  "helpvalue": "<em>You can use the full notification webhook directly.</h6>"
                 },
                 {
                   "type": "section",
