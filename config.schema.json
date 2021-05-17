@@ -85,6 +85,12 @@
               "description": "Complete webhook for the notification, overrides the notification name",
               "type": "string"
             },
+            "mute": {
+              "title": "Mute time",
+              "description": "The time to mute the notification after activation",
+              "type": "integer",
+              "default": 5
+            },
             "sound": {
               "title": "Notification sound",
               "type": "string",
@@ -225,6 +231,10 @@
                   "type": "section",
                   "condition": "notifications[arrayIndex].useWebhook",
                   "items": ["notifications[].webhook"]
+                },
+                {
+                  "type": "section",
+                  "items": ["notifications[].mute"]
                 },
                 {
 		              "type": "section",
