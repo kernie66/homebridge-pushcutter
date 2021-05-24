@@ -43,7 +43,17 @@
           "customUrl": {
             "title": "Enter custom URL",
             "type": "string",
-            "placeholder": "https://api.pushcut.io/v1/"
+            "placeholder": "https://api.pushcut.io"
+          },
+          "customSecret": {
+            "title": "Enter custom secret",
+            "type": "string",
+            "placeholder": "/v1"
+          },
+          "customCommand": {
+            "title": "Enter custom command",
+            "type": "string",
+            "placeholder": "/notifications"
           }
         }  
       },
@@ -90,6 +100,16 @@
               "description": "The time to mute the notification after activation",
               "type": "integer",
               "default": 5
+            },
+            "pcTitle": {
+              "title": "Notification title",
+              "description": "Add new title for the notification",
+              "type": "string"
+            },
+            "pcText": {
+              "title": "Notification text",
+              "description": "Add a new text for the notification",
+              "type": "string"
             },
             "sound": {
               "title": "Notification sound",
@@ -183,9 +203,24 @@
           "description": "Use a custom URL."
         },
         {
-          "key": "customUrl",
-          "description": "Enter the URL to use.",
+          "type": "help",
+          "helpvalue": "<em>Enter the parts corresponding to URL/secret/command",
           "condition": "api.useCustomUrl"
+        },
+        {
+          "type": "section",
+          "condition": "api.useCustomUrl",
+          "items": ["api.customUrl"]
+        },
+        {
+          "type": "section",
+          "condition": "api.useCustomUrl",
+          "items": ["api.customSecret"]
+        },
+        {
+          "type": "section",
+          "condition": "api.useCustomUrl",
+          "items": ["api.customCommand"]
         }
       ]
     },
@@ -231,6 +266,18 @@
                   "type": "section",
                   "condition": "notifications[arrayIndex].useWebhook",
                   "items": ["notifications[].webhook"]
+                },
+                {
+                  "type": "help",
+                  "helpvalue": "<em>To change the title and text for the Pushcut notification, enter the new title or text below.</em>"
+                },
+                {
+                  "key": "notifications[].pcTitle",
+                  "placeholder": "Leave empty for Pushcut defined title"
+                },
+                {
+                  "key": "notifications[].pcText",
+                  "placeholder": "Leave empty for Pushcut defined text"
                 },
                 {
                   "type": "section",
