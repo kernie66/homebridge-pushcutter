@@ -111,6 +111,38 @@
               "description": "Add a new text for the notification",
               "type": "string"
             },
+            "pcDate": {
+              "title": "Date order in text",
+              "description": "Set the order of date, time and week in text",
+              "type": "string",
+              "default": "Time-Date-Week",
+              "oneOf": [
+                {
+                  "title": "Time/Date/Week",
+                  "enum": ["Time-Date-Week"]
+                },
+                {
+                  "title": "Date/Time/Week",
+                  "enum": ["Date-Time-Week"]
+                },
+                {
+                  "title": "Time/Week/Date",
+                  "enum": ["Time-Week-Date"]
+                },
+                {
+                  "title": "Date/Week/Time",
+                  "enum": ["Date-Week-Time"]
+                },
+                {
+                  "title": "Week/Time/Date",
+                  "enum": ["Week-Time-Date"]
+                },
+                {
+                  "title": "Week/Date/Time",
+                  "enum": ["Week-Date-Time"]
+                }
+              ]
+            },
             "sound": {
               "title": "Notification sound",
               "type": "string",
@@ -118,51 +150,35 @@
               "oneOf": [
                 {
                   "title": "vibrateOnly",
-                  "enum": [
-                    "vibrateOnly"
-                  ]
+                  "enum": ["vibrateOnly"]
                 },
                 {
                   "title": "system",
-                  "enum": [
-                    "system"
-                  ]
+                  "enum": ["system"]
                 },
                 {
                   "title": "subtle",
-                  "enum": [
-                    "subtle"
-                  ]
+                  "enum": ["subtle"]
                 },
                 {
                   "title": "question",
-                  "enum": [
-                    "question"
-                  ]
+                  "enum": ["question"]
                 },
                 {
                   "title": "jobDone",
-                  "enum": [
-                    "jobDone"
-                  ]
+                  "enum": ["jobDone"]
                 },
                 {
                   "title": "problem",
-                  "enum": [
-                    "problem"
-                  ]
+                  "enum": ["problem"]
                 },
                 {
                   "title": "loud",
-                  "enum": [
-                    "loud"
-                  ]
+                  "enum": ["loud"]
                 },
                 {
                   "title": "lasers",
-                  "enum": [
-                    "lasers"
-                  ]
+                  "enum": ["lasers"]
                 }
               ]
             }
@@ -278,6 +294,9 @@
                 {
                   "key": "notifications[].pcText",
                   "placeholder": "Leave empty for Pushcut defined text"
+                },
+                {
+                  "key": "notifications[].pcDate"
                 },
                 {
                   "type": "section",
