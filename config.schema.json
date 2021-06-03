@@ -36,6 +36,11 @@
             "type": "string",
             "placeholder": "Enter API key or secret"
           },
+          "locale": {
+            "title": "Locale used for time and date notation",
+            "type": "string",
+            "placeholder": "Enter two character locale"
+          },
           "useCustomUrl": {
             "title": "Use custom URL",
             "type": "boolean"
@@ -168,24 +173,17 @@
       "ref": "api",
       "type": "section",
       "title": "Pushcut API Setup",
+      "expandable": true,
+      "expanded": false,
       "items": [
         {
           "type": "help",
           "helpvalue": "<em>If no API is used, you must provide a full webhook for each notification.</em>"
         },
         "api.selectApi",
-        {
-          "key": "api.apiCode",
-          "description": "Enter the API key or webhook secret.",
-          "required": true,
-          "condition": {
-            "functionBody": "return (api.selectApi==='secret')"
-          }
-        },
-        {
-          "key": "api.useCustomUrl",
-          "description": "Use a custom URL."
-        },
+        "api.apiCode",
+        "api.locale",
+        "api.useCustomUrl",
         {
           "type": "help",
           "helpvalue": "<em>Enter the parts corresponding to URL/secret/command",
@@ -205,12 +203,12 @@
           "type": "section",
           "condition": "api.useCustomUrl",
           "items": ["api.customCommand"]
+        },
+        {
+          "key": "devices",
+          "type": "text"
         }
       ]
-    },
-    {
-      "key": "devices",
-      "type": "text"
     },
     {
       "nodescription": true,
@@ -225,51 +223,50 @@
           "items": [
             {
               "key": "notifications[]",
-              "title": "{{ 'Notification switch ' + $index + ' settings' }}",
+              "title": "{{ 'Setup notification switch ' + $index }}",
               "items": [
-                {
-		              "type": "section",
-	                "items": ["notifications[].switchName"]
-                },
-                {
-		              "type": "section",
-                  "condition": {
-                    "functionBody": "return (notifications[].useWebhook===false"
-                  },
-	                "items": ["notifications[].notificationName"]
-                },
-                {
-                  "type": "help",
-                  "helpvalue": "<em>You can use the full notification webhook directly.</h6>"
-                },
+	              "notifications[].switchName",
+                "notifications[].notificationName",
                 {
                   "type": "section",
-                  "items": ["notifications[].useWebhook"]
-                },
-                {
-                  "type": "section",
-                  "condition": "notifications[arrayIndex].useWebhook",
-                  "items": ["notifications[].webhook"]
-                },
-                {
-                  "type": "help",
-                  "helpvalue": "<em>To change the title and text for the Pushcut notification, enter the new title or text below.</em>"
-                },
-                {
-                  "key": "notifications[].pcTitle",
-                  "placeholder": "Leave empty for Pushcut defined title"
-                },
-                {
-                  "key": "notifications[].pcText",
-                  "placeholder": "Leave empty for Pushcut defined text"
-                },
-                {
-                  "type": "section",
-                  "items": ["notifications[].mute"]
-                },
-                {
-		              "type": "section",
-	                "items": ["notifications[].sound"]
+                  "title": "Additional settings",
+                  "expandable": true,
+                  "expanded": false,
+                  "items": [
+                    {
+                      "type": "help",
+                      "helpvalue": "<em>You can use the full notification webhook directly.</h6>"
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].useWebhook"]
+                    },
+                    {
+                      "type": "section",
+                      "condition": "notifications[arrayIndex].useWebhook",
+                      "items": ["notifications[].webhook"]
+                    },
+                    {
+                      "type": "help",
+                      "helpvalue": "<em>To change the title and text for the Pushcut notification, enter the new title or text below.</em>"
+                    },
+                    {
+                      "key": "notifications[].pcTitle",
+                      "placeholder": "Leave empty for Pushcut defined title"
+                    },
+                    {
+                      "key": "notifications[].pcText",
+                      "placeholder": "Leave empty for Pushcut defined text"
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].mute"]
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].sound"]
+                    }
+                  ]
                 }
               ]
 	          }
