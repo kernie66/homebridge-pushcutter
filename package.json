@@ -16,7 +16,6 @@
     "is-url-http": "^2.2.3",
     "parse-url": "^5.0.0",
     "luxon": "^1.27.0",
-    "util": "^0.12.3",
     "key-value-replace": "^3.0.0",
     "np": "^7.5.0"
   },
