@@ -40,25 +40,6 @@
             "title": "Locale used for time and date notation",
             "type": "string",
             "placeholder": "Enter two character locale"
-          },
-          "useCustomUrl": {
-            "title": "Use custom URL",
-            "type": "boolean"
-          },
-          "customUrl": {
-            "title": "Enter custom URL",
-            "type": "string",
-            "placeholder": "https://api.pushcut.io"
-          },
-          "customSecret": {
-            "title": "Enter custom secret",
-            "type": "string",
-            "placeholder": "/v1"
-          },
-          "customCommand": {
-            "title": "Enter custom command",
-            "type": "string",
-            "placeholder": "/notifications"
           }
         }  
       },
@@ -183,27 +164,6 @@
         "api.selectApi",
         "api.apiCode",
         "api.locale",
-        "api.useCustomUrl",
-        {
-          "type": "help",
-          "helpvalue": "<em>Enter the parts corresponding to URL/secret/command",
-          "condition": "api.useCustomUrl"
-        },
-        {
-          "type": "section",
-          "condition": "api.useCustomUrl",
-          "items": ["api.customUrl"]
-        },
-        {
-          "type": "section",
-          "condition": "api.useCustomUrl",
-          "items": ["api.customSecret"]
-        },
-        {
-          "type": "section",
-          "condition": "api.useCustomUrl",
-          "items": ["api.customCommand"]
-        },
         {
           "key": "devices",
           "type": "text"
