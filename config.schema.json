@@ -97,6 +97,23 @@
               "description": "Add a new text for the notification",
               "type": "string"
             },
+            "startOnReboot": 
+            {
+              "title": "Send notification when Homebridge restarts",
+              "type": "boolean",
+              "default": false,
+              "required": false
+            },
+            "rebootTitle": {
+              "title": "Reboot notification title",
+              "description": "Add new title for the notification",
+              "type": "string"
+            },
+            "rebootText": {
+              "title": "Reboot notification text",
+              "description": "Add a new text for the notification",
+              "type": "string"
+            },
             "sound": {
               "title": "Notification sound",
               "type": "string",
@@ -221,6 +238,20 @@
                     {
                       "type": "section",
                       "items": ["notifications[].mute"]
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].startOnReboot"]
+                    },
+                    {
+                      "key": "notifications[].rebootTitle",
+                      "condition": "notifications[arrayIndex].startOnReboot",
+                      "placeholder": "Leave empty for Pushcut defined title"
+                    },
+                    {
+                      "condition": "notifications[arrayIndex].startOnReboot",
+                      "key": "notifications[].rebootText",
+                      "placeholder": "Leave empty for Pushcut defined text"
                     },
                     {
                       "type": "section",
