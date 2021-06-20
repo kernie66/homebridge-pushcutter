@@ -1,0 +1,269 @@
+{
+  "pluginAlias": "Pushcutter",
+  "headerDisplay": "Homebridge plugin for Pushcut notifications.",
+  "footerDisplay": "Please visit https://github.com/kernie66/homebridge-pushcutter for more details.",
+  "pluginType": "platform",
+  "singular": false,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "description": "Plugin name as displayed in the homebridge log.",
+        "type": "string",
+        "required": true,
+        "default": "Pushcutter"
+      },
+      "api": {
+        "type": "object",
+        "properties": {
+          "selectApi": {
+            "title": "Select type of API",
+            "type": "string",
+            "default": "apiKey",
+            "oneOf": [
+              {
+                "title": "API key",
+                "enum": ["apiKey"]
+              },
+              {
+                "title": "Webhook secret",
+                "enum": ["secret"]
+              }
+            ]
+          },
+          "apiCode": {
+            "title": "Pushcut API key or Webhook secret",
+            "type": "string",
+            "placeholder": "Enter API key or secret"
+          },
+          "locale": {
+            "title": "Locale used for time and date notation",
+            "type": "string",
+            "placeholder": "Enter two character locale"
+          }
+        }  
+      },
+      "devices": {
+        "title": "Pushcut devices (leave blank for all)",
+        "type": "string",
+        "required": false,
+        "placeholder": "device1,device2,...",
+        "description": "Device list seperated by comma - WITHOUT SPACE after comma!"
+      },        
+      "notifications": {
+        "title": "Pushcut notifications",
+        "notitle": true,
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "switchName": {
+              "title": "Notification switch name",
+              "description": "Name of the notification switch in HomeKit.",
+              "type": "string",
+              "required": true
+            },
+	          "notificationName": {
+              "title": "Pushcut notification name",
+              "description": "Name of your Pushcut notification to use for the switch.",
+              "type": "string",
+              "placeholder": "Leave blank if webhook is used",
+              "required": false
+            },
+            "useWebhook": {
+              "title": "Use webhook",
+              "description": "Enable the use of webhook instead of API key",
+              "type": "boolean",
+              "default": false
+            },
+            "webhook": {
+              "title": "Pushcut notification webhook",
+              "description": "Complete webhook for the notification, overrides the notification name",
+              "type": "string"
+            },
+            "mute": {
+              "title": "Mute time",
+              "description": "The time to mute the notification after activation",
+              "type": "integer",
+              "default": 5
+            },
+            "pcTitle": {
+              "title": "Notification title",
+              "description": "Add new title for the notification",
+              "type": "string"
+            },
+            "pcText": {
+              "title": "Notification text",
+              "description": "Add a new text for the notification",
+              "type": "string"
+            },
+            "startOnReboot": 
+            {
+              "title": "Send notification when Homebridge restarts",
+              "type": "boolean",
+              "default": false,
+              "required": false
+            },
+            "rebootTitle": {
+              "title": "Reboot notification title",
+              "description": "Add new title for the notification",
+              "type": "string"
+            },
+            "rebootText": {
+              "title": "Reboot notification text",
+              "description": "Add a new text for the notification",
+              "type": "string"
+            },
+            "sound": {
+              "title": "Notification sound",
+              "type": "string",
+              "default": "system",
+              "oneOf": [
+                {
+                  "title": "vibrateOnly",
+                  "enum": ["vibrateOnly"]
+                },
+                {
+                  "title": "system",
+                  "enum": ["system"]
+                },
+                {
+                  "title": "subtle",
+                  "enum": ["subtle"]
+                },
+                {
+                  "title": "question",
+                  "enum": ["question"]
+                },
+                {
+                  "title": "jobDone",
+                  "enum": ["jobDone"]
+                },
+                {
+                  "title": "problem",
+                  "enum": ["problem"]
+                },
+                {
+                  "title": "loud",
+                  "enum": ["loud"]
+                },
+                {
+                  "title": "lasers",
+                  "enum": ["lasers"]
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "form": [
+    {
+      "type": "help",
+      "helpvalue": "<div class=\"alert alert-info\">Homebridge Pushcut Notifications</div>"
+    },
+    {
+      "key": "name",
+      "type": "text"
+    },
+    {
+      "ref": "api",
+      "type": "section",
+      "title": "Pushcut API Setup",
+      "expandable": true,
+      "expanded": false,
+      "items": [
+        {
+          "type": "help",
+          "helpvalue": "<em>If no API is used, you must provide a full webhook for each notification.</em>"
+        },
+        "api.selectApi",
+        "api.apiCode",
+        "api.locale",
+        {
+          "key": "devices",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "nodescription": true,
+      "notitle": false,
+      "key": "notifications",
+      "title": "Notifications",
+      "type": "array",
+      "items": [
+        {
+          "type": "section",
+          "notitle": true,
+          "items": [
+            {
+              "key": "notifications[]",
+              "title": "{{ 'Setup notification switch ' + $index }}",
+              "items": [
+	              "notifications[].switchName",
+                "notifications[].notificationName",
+                {
+                  "type": "section",
+                  "title": "Additional settings",
+                  "expandable": true,
+                  "expanded": false,
+                  "items": [
+                    {
+                      "type": "help",
+                      "helpvalue": "<em>You can use the full notification webhook directly.</h6>"
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].useWebhook"]
+                    },
+                    {
+                      "type": "section",
+                      "condition": "notifications[arrayIndex].useWebhook",
+                      "items": ["notifications[].webhook"]
+                    },
+                    {
+                      "type": "help",
+                      "helpvalue": "<em>To change the title and text for the Pushcut notification, enter the new title or text below.</em>"
+                    },
+                    {
+                      "key": "notifications[].pcTitle",
+                      "placeholder": "Leave empty for Pushcut defined title"
+                    },
+                    {
+                      "key": "notifications[].pcText",
+                      "placeholder": "Leave empty for Pushcut defined text"
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].mute"]
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].startOnReboot"]
+                    },
+                    {
+                      "key": "notifications[].rebootTitle",
+                      "condition": "notifications[arrayIndex].startOnReboot",
+                      "placeholder": "Leave empty for Pushcut defined title"
+                    },
+                    {
+                      "condition": "notifications[arrayIndex].startOnReboot",
+                      "key": "notifications[].rebootText",
+                      "placeholder": "Leave empty for Pushcut defined text"
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].sound"]
+                    }
+                  ]
+                }
+              ]
+	          }
+          ]
+        }
+      ]
+    }
+  ]
+}
