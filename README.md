@@ -72,21 +72,21 @@ Parameter | Default | Description
 `platform` | `Pushcutter` | Identification of the Pushcutter platform configuration data.
 `name`    | `Pushcutter` | Name used to identify the platform in the Homebridge log files. 
 `api`     | N/A     | Array of API related configurations.
-+ `selectApi` | `apiKey` | Set to `apiKey` to use API key or `secret` to use the Webhook secret.
-+ `apiCode` | N/A   | API key code or Webhook secret code, depending on the setting of `selectApi`
-+ `locale`  | System default | Sets the locale for the time and date added by the plugin to the notification.
+`selectApi` | `apiKey` | Set to `apiKey` to use API key or `secret` to use the Webhook secret.
+`apiCode` | N/A   | API key code or Webhook secret code, depending on the setting of `selectApi`
+`locale`  | System default | Sets the locale for the time and date added by the plugin to the notification.
 `notifications` | N/A | Array of notification switches
-+ `switchName`| N/A | Name of the switch as seen in HomeKit
-+ `notificationName`| N/A | Name of the Pushcut notification. Make sure that the correct name of an existing Pushcut notification is used. If the API key is used, the notification name will be checked by the plugin, see the HomeBridge log file.
-+ `useWebhook` | `false` | Set to `true` to use a complete Pushcut Webhook path, as defined for each notification in the Pushcut app. This overrides the `apiCode` for the selected switch. Useful if notifications are defined with different Webhook secrets. (boolean)
-+ `webhook` | N/A | Complete URL of the webhook to use for the notification when `useWebhook` is `true`. Get the URL from the Edit dialogue for the notification in the Pushcut app.
-+ `mute`   | 5 | Time in seconds after the activation of the switch to wait before another activation of the switch is possible. The switch will be in the ON state during the mute time. The switch can be turned off to end the mute state. This is to prevent multiple notifications of the same type within a defined time.
-+ `pcTitle` | N/A | Enter the title text to use for the notifiction, to override the title defined in the Pushcut app. Leave blank to keep the Pushcut defined title.
-+ `pcText` | N/A | Enter the body text to use for the notifiction, to override the text defined in the Pushcut app. Leave blank to keep the Pushcut defined text.
-+ `startOnReboot`   | `false` | Set to `true` to activate the notification switch when the plugin restarts. This makes it easy to get notified if Homebridge restarts unexpectedly. (boolean)
-+ `rebootTitle` | N/A | Enter the title text to use for the restart notifiction, to override any other title defined. Leave blank to keep the Pushcut defined title. This makes it possible to use an existing switch for the restart notification.
-+ `rebootText` | N/A | Enter the body text to use for the restart notifiction, to override any other text defined for the switch. Leave blank to keep the Pushcut defined text.
-+ `sound` | `system` | Notification sound. See Config UI X configuration for possible values. (lowercase string)
+`switchName`| N/A | Name of the switch as seen in HomeKit
+`notificationName`| N/A | Name of the Pushcut notification. Make sure that the correct name of an existing Pushcut notification is used. If the API key is used, the notification name will be checked by the plugin, see the HomeBridge log file.
+`useWebhook` | `false` | Set to `true` to use a complete Pushcut Webhook path, as defined for each notification in the Pushcut app. This overrides the `apiCode` for the selected switch. Useful if notifications are defined with different Webhook secrets. (boolean)
+`webhook` | N/A | Complete URL of the webhook to use for the notification when `useWebhook` is `true`. Get the URL from the Edit dialogue for the notification in the Pushcut app.
+`mute`   | 5 | Time in seconds after the activation of the switch to wait before another activation of the switch is possible. The switch will be in the ON state during the mute time. The switch can be turned off to end the mute state. This is to prevent multiple notifications of the same type within a defined time.
+`pcTitle` | N/A | Enter the title text to use for the notifiction, to override the title defined in the Pushcut app. Leave blank to keep the Pushcut defined title.
+`pcText` | N/A | Enter the body text to use for the notifiction, to override the text defined in the Pushcut app. Leave blank to keep the Pushcut defined text.
+`startOnReboot`   | `false` | Set to `true` to activate the notification switch when the plugin restarts. This makes it easy to get notified if Homebridge restarts unexpectedly. (boolean)
+`rebootTitle` | N/A | Enter the title text to use for the restart notifiction, to override any other title defined. Leave blank to keep the Pushcut defined title. This makes it possible to use an existing switch for the restart notification.
+`rebootText` | N/A | Enter the body text to use for the restart notifiction, to override any other text defined for the switch. Leave blank to keep the Pushcut defined text.
+`sound` | `system` | Notification sound. See Config UI X configuration for possible values. (lowercase string)
 
 ## Insert time and date
 
