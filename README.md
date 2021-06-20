@@ -90,5 +90,18 @@ Parameter | Default | Description
 
 ## Insert time and date
 
-## Locales
-[ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+You can add the current time, date and week number to any new title or text for the notifications. Just add a `{time}`, `{date}` or `{week}` to the string and the plugin will replace them with the actual values. The plugin uses [Luxon](https://moment.github.io/luxon/index.html) as the date wrapper. Luxon provides the time and date formatted for your country and language if the locale is set correctly. If the system default is not your preferred language, set the `locale` in the config file to the two-letter country code defined by [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+
+## Why Pushcut
+
+I tried a lot of apps to get notifications from HomeKit to my iPhone and iPad, but either they lacked possibilities to modify them to my liking, or they didn't work 100% on my devices. Finally I ended up using [Pushcut](https://pushcut.io), due to the easy use and possibility to do tweaking to the contents of the notifications. There are great examples on how to use Pushcut with IOS Shortcuts and to activate Pushcut notifications from HomeKit automations. So in theory, this plugin is not needed.
+
+## Why Pushcutter
+
+I created this plugin because sometimes HomeKit looses the settings. Sometimes it is my own fault, but sometimes it just happens. And if you created a nice shortcut-based automation, that is lost. [Controller for HomeKit](https://controllerforhomekit.com) has a nice backup and restore feature that has saved me from a lot of rework many times. But no 3rd party app can save your shortcuts, but your automation switches are saved by Controller for HomeKit. So this is my solution to get most of the features of Pushcut, that I use, in a format that can be backed up and restored in case of trouble.   
+
+## Thanks
+
+This plugin uses [Homebridge-Lib](https://github.com/ebaauw/homebridge-lib) by Eric Baauw for most of its features. I also peeked a lot at Eric's other excellent plugins that uses Homebridge-Lib. I'm rather new to Node.js, so developing plugins is my way of learning. This plugin uses the HttpClient of Homebridge-Lib, which was a new experience for me.
+
+The Pushcut accesses was inspired by [homebridge-smart-irrigation](https://github.com/MTry/homebridge-smart-irrigation) by Mayank, which was the only other plugin I found that uses Pushcut.
