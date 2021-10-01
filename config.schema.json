@@ -116,6 +116,11 @@
               "description": "Add a new text for the notification",
               "type": "string"
             },
+            "pcImage":{
+              "title": "Notification image",
+              "description": "Enter URL or path to image file",
+              "type": "string"
+            },
             "sound": {
               "title": "Notification sound",
               "type": "string",
@@ -257,6 +262,10 @@
                     {
                       "key": "notifications[].pcText",
                       "placeholder": "Leave empty for Pushcut defined text"
+                    },
+                    {
+                      "key": "notifications[].pcImage",
+                      "placeholder": "Leave empty for Pushcut defined image (or none)"
                     },
                     {
                       "type": "section",
