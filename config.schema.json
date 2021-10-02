@@ -40,25 +40,6 @@
             "title": "Locale used for time and date notation",
             "type": "string",
             "placeholder": "Enter two character locale"
-          },
-          "useCustomUrl": {
-            "title": "Use custom URL",
-            "type": "boolean"
-          },
-          "customUrl": {
-            "title": "Enter custom URL",
-            "type": "string",
-            "placeholder": "https://api.pushcut.io"
-          },
-          "customSecret": {
-            "title": "Enter custom secret",
-            "type": "string",
-            "placeholder": "/v1"
-          },
-          "customCommand": {
-            "title": "Enter custom command",
-            "type": "string",
-            "placeholder": "/notifications"
           }
         }  
       },
@@ -119,6 +100,23 @@
             "pcImage": {
               "title": "Notification image",
               "description": "Enter URL or path to image file",
+              "type": "string"
+            },
+            "startOnReboot": 
+            {
+              "title": "Send notification when Homebridge restarts",
+              "type": "boolean",
+              "default": false,
+              "required": false
+            },
+            "rebootTitle": {
+              "title": "Reboot notification title",
+              "description": "Add new title for the notification",
+              "type": "string"
+            },
+            "rebootText": {
+              "title": "Reboot notification text",
+              "description": "Add a new text for the notification",
               "type": "string"
             },
             "sound": {
@@ -188,27 +186,6 @@
         "api.selectApi",
         "api.apiCode",
         "api.locale",
-        "api.useCustomUrl",
-        {
-          "type": "help",
-          "helpvalue": "<em>Enter the parts corresponding to URL/secret/command",
-          "condition": "api.useCustomUrl"
-        },
-        {
-          "type": "section",
-          "condition": "api.useCustomUrl",
-          "items": ["api.customUrl"]
-        },
-        {
-          "type": "section",
-          "condition": "api.useCustomUrl",
-          "items": ["api.customSecret"]
-        },
-        {
-          "type": "section",
-          "condition": "api.useCustomUrl",
-          "items": ["api.customCommand"]
-        },
         {
           "key": "devices",
           "type": "text"
@@ -270,6 +247,20 @@
                     {
                       "type": "section",
                       "items": ["notifications[].mute"]
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].startOnReboot"]
+                    },
+                    {
+                      "key": "notifications[].rebootTitle",
+                      "condition": "notifications[arrayIndex].startOnReboot",
+                      "placeholder": "Leave empty for Pushcut defined title"
+                    },
+                    {
+                      "condition": "notifications[arrayIndex].startOnReboot",
+                      "key": "notifications[].rebootText",
+                      "placeholder": "Leave empty for Pushcut defined text"
                     },
                     {
                       "type": "section",

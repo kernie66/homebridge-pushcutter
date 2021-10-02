@@ -1,6 +1,6 @@
 {
   "name": "homebridge-pushcutter",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Pushcut notification plugin for Homebridge: https://github.com/nfarina/homebridge",
   "license": "MIT",
   "keywords": [
@@ -11,13 +11,12 @@
   ],
   "dependencies": {
     "abort-controller": "^3.0.0",
-    "homebridge-lib": "^5.1.3",
-    "got": "^11.8.2",
+    "homebridge-lib": "^5.1.6",
     "is-url-http": "^2.2.3",
-    "parse-url": "^5.0.0",
-    "luxon": "^1.27.0",
     "key-value-replace": "^3.0.0",
-    "np": "^7.5.0"
+    "luxon": "^1.27.0",
+    "np": "^7.5.0",
+    "parse-url": "^5.0.3"
   },
   "repository": {
     "type": "git",
