@@ -116,7 +116,7 @@
               "description": "Add a new text for the notification",
               "type": "string"
             },
-            "pcImage":{
+            "pcImage": {
               "title": "Notification image",
               "description": "Enter URL or path to image file",
               "type": "string"
