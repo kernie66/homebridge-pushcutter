@@ -99,7 +99,7 @@
             },
             "pcImage": {
               "title": "Notification image",
-              "description": "Enter URL or path to image file",
+              "description": "Enter URL to image file",
               "type": "string"
             },
             "startOnReboot": 
