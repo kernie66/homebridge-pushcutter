@@ -6,7 +6,7 @@
 
 With this plugin, you can create any number of fake switches that will trigger a [Pushcut](https://pushcut.io) notification when turned ON. The notification is muted for a selectable time (indicated by the switch remaining in the ON position) to avoid multiple notifications.
 
-The Pushcut notifications must be defined in Pushcut before they can be used, but the title and the text of the notification can be updated in the switch configuration. The title and text can include the name of the switch, and the current time, date and week number.
+The Pushcut notifications must be defined in Pushcut before they can be used, but the title, the text and the image of the notification can be updated in the switch configuration. The title and text can include the name of the switch, and the current time, date and week number.
 
 The plugin supports Pushcut API keys, Webhook secrets and complete Webhooks. You can also use a custom URL, to trigger any type of URL based actions.
 
@@ -56,7 +56,7 @@ Basically, all you need to do is:
 2. Get either the API key or the Webhook secret code from the Account page in the Pushcut app.
 3. Select the type of key and enter the API key or Webhook secret in the config file.
 4. For each notification, add a notification switch and enter the name of the Puchcut notification.
-5. Add a new title and text for the notification, if desired. This makes it possible to create different notification switches using the same Pushcut notification, but with different contents.
+5. Add a new title, text and image for the notification, if desired. This makes it possible to create different notification switches using the same Pushcut notification, but with different contents.
 6. Set the desired mute time in the config file (in seconds), to avoid additional activations within that time.
 7. The plugin will create one switch for each notification.
 8. Use this switch in any scene or automation to trigger the notification.
@@ -83,7 +83,8 @@ Parameter | Default | Description
 `mute`   | 5 | Time in seconds after the activation of the switch to wait before another activation of the switch is possible. The switch will be in the ON state during the mute time. The switch can be turned off to end the mute state. This is to prevent multiple notifications of the same type within a defined time.
 `pcTitle` | N/A | Enter the title text to use for the notifiction, to override the title defined in the Pushcut app. Leave blank to keep the Pushcut defined title.
 `pcText` | N/A | Enter the body text to use for the notifiction, to override the text defined in the Pushcut app. Leave blank to keep the Pushcut defined text.
-`startOnReboot`   | `false` | Set to `true` to activate the notification switch when the plugin restarts. This makes it easy to get notified if Homebridge restarts unexpectedly. (boolean)
+'pcImage' | N/A | Enter an URL to an image to use in the notification. Leave blank to keep the Pushcut defined image, if any. Pushcut will show the notification, even if the URL is not for a valid image file, you just don't get an image.
+`startOnReboot` | `false` | Set to `true` to activate the notification switch when the plugin restarts. This makes it easy to get notified if Homebridge restarts unexpectedly. (boolean)
 `rebootTitle` | N/A | Enter the title text to use for the restart notifiction, to override any other title defined. Leave blank to keep the Pushcut defined title. This makes it possible to use an existing switch for the restart notification.
 `rebootText` | N/A | Enter the body text to use for the restart notifiction, to override any other text defined for the switch. Leave blank to keep the Pushcut defined text.
 `sound` | `system` | Notification sound. See Config UI X configuration for possible values. (lowercase string)
