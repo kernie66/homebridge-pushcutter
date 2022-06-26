@@ -11,14 +11,15 @@
   ],
   "dependencies": {
     "abort-controller": "^3.0.0",
-    "homebridge-lib": "^5.2.0",
-    "is-url-http": "^2.2.7",
+    "events": "^3.3.0",
+    "homebridge-lib": "^5.6.1",
+    "is-url-http": "^2.3.2",
     "key-value-replace": "^3.0.0",
-    "luxon": "^2.3.0",
-    "parse-url": "^5.0.7"
+    "luxon": "^2.4.0",
+    "parse-url": "^5.0.8"
   },
   "devDependencies": {
-    "np": "^7.6.0"
+    "np": "^7.6.2"
   },
   "repository": {
     "type": "git",
@@ -28,8 +29,8 @@
     "url": "http://github.com/kernie66/homebridge-pushcutter/issues"
   },
   "engines": {
-    "node": "16.13.2",
-    "homebridge": "^1.4.0"
+    "node": "16.15.1",
+    "homebridge": "^1.5.0"
   },
   "scripts": {
     "test": "echo \"No test specified\""
