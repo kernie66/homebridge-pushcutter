@@ -12,10 +12,10 @@
   "dependencies": {
     "abort-controller": "^3.0.0",
     "events": "^3.3.0",
-    "homebridge-lib": "^5.6.1",
+    "homebridge-lib": "^5.6.5",
     "is-url-http": "^2.3.2",
     "key-value-replace": "^3.0.0",
-    "luxon": "^2.4.0",
+    "luxon": "^3.0.3",
     "parse-url": "^5.0.8"
   },
   "devDependencies": {
@@ -29,7 +29,7 @@
     "url": "http://github.com/kernie66/homebridge-pushcutter/issues"
   },
   "engines": {
-    "node": "16.15.1",
+    "node": "^16.17.0",
     "homebridge": "^1.5.0"
   },
   "scripts": {

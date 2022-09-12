@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.3
+
+### Bump dependencies
+
+- Node v16.17.0 LTS
+- homebridge-lib v5.6.5
+- luxon v3.0.3
+
 ## 1.1.2
 
 ### Bump dependencies
