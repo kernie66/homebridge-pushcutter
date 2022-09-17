@@ -167,13 +167,6 @@
               "title": "Restore Configuration at Restart",
               "type": "boolean",
               "default": true
-            },
-            "heartrate":
-            {
-              "title": "Heartrate",
-              "type": "integer",
-              "default": 15,
-              "description": "Heartrate interval of the switch"
             }
           }
         }
@@ -286,10 +279,6 @@
                       "condition": "notifications[arrayIndex].startOnReboot",
                       "key": "notifications[].rebootText",
                       "placeholder": "Leave empty for Pushcut defined text"
-                    },
-                    {
-                      "type": "section",
-                      "items": ["notifications[].heartrate"]
                     }
                   ]
                 }
