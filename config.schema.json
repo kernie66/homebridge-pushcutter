@@ -122,8 +122,12 @@
             "sound": {
               "title": "Notification sound",
               "type": "string",
-              "default": "system",
+              "default": "default",
               "oneOf": [
+                {
+                  "title": "default",
+                  "enum": ["default"]
+                },
                 {
                   "title": "vibrateOnly",
                   "enum": ["vibrateOnly"]
@@ -157,6 +161,19 @@
                   "enum": ["lasers"]
                 }
               ]
+            },
+            "useConfig": 
+            {
+              "title": "Restore Configuration at Restart",
+              "type": "boolean",
+              "default": true
+            },
+            "heartrate":
+            {
+              "title": "Heartrate",
+              "type": "integer",
+              "default": 15,
+              "description": "Heartrate interval of the switch"
             }
           }
         }
@@ -246,7 +263,15 @@
                     },
                     {
                       "type": "section",
+                      "items": ["notifications[].sound"]
+                    },
+                    {
+                      "type": "section",
                       "items": ["notifications[].mute"]
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].useConfig"]
                     },
                     {
                       "type": "section",
@@ -264,7 +289,7 @@
                     },
                     {
                       "type": "section",
-                      "items": ["notifications[].sound"]
+                      "items": ["notifications[].heartrate"]
                     }
                   ]
                 }
