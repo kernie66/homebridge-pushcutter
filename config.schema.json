@@ -43,13 +43,6 @@
           }
         }  
       },
-      "devices": {
-        "title": "Pushcut devices (leave blank for all)",
-        "type": "string",
-        "required": false,
-        "placeholder": "device1,device2,...",
-        "description": "Device list seperated by comma - WITHOUT SPACE after comma!"
-      },        
       "notifications": {
         "title": "Pushcut notifications",
         "notitle": true,
@@ -102,8 +95,7 @@
               "description": "Enter URL to image file",
               "type": "string"
             },
-            "startOnReboot": 
-            {
+            "startOnReboot": {
               "title": "Send notification when Homebridge restarts",
               "type": "boolean",
               "default": false,
@@ -162,8 +154,14 @@
                 }
               ]
             },
-            "useConfig": 
-            {
+            "devices": {
+              "title": "Pushcut devices (leave blank for all)",
+              "type": "string",
+              "required": false,
+              "placeholder": "device1,device2,...",
+              "description": "Device list separated by comma - WITHOUT SPACE after comma!"
+            },        
+            "useConfig": {
               "title": "Restore Configuration at Restart",
               "type": "boolean",
               "default": true
@@ -261,6 +259,10 @@
                     {
                       "type": "section",
                       "items": ["notifications[].mute"]
+                    },
+                    {
+                      "type": "section",
+                      "items": ["notifications[].devices"]
                     },
                     {
                       "type": "section",
