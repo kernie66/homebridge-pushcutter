@@ -4,10 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## 1.1.3
 
+### Enhancements
+
+- Allow the values to be restored from the configuration file after restart.
+- Selection of sounds implemented.
+- Selection of devices that will receive notifications.
+- Log level is working.
+
 ### Bump dependencies
 
 - Node v16.17.0 LTS
-- homebridge-lib v5.6.5
+- homebridge-lib v5.6.7
 - luxon v3.0.3
 
 ## 1.1.2

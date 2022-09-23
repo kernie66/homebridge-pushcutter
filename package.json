@@ -16,7 +16,7 @@
     "is-url-http": "^2.3.2",
     "key-value-replace": "^3.0.0",
     "luxon": "^3.0.3",
-    "parse-url": "^5.0.8"
+    "parse-url": "^8.1.0"
   },
   "devDependencies": {
     "np": "^7.6.2"
