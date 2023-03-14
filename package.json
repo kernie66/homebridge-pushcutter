@@ -9,17 +9,16 @@
     "notification",
     "automation"
   ],
+  "main": "./lib/index.js",
+  "files": [
+    "/lib"
+  ],
   "dependencies": {
     "abort-controller": "^3.0.0",
     "events": "^3.3.0",
-    "homebridge-lib": "^5.6.5",
-    "is-url-http": "^2.3.2",
+    "homebridge-lib": "^6.3.12",
     "key-value-replace": "^3.0.0",
-    "luxon": "^3.0.3",
-    "parse-url": "^8.1.0"
-  },
-  "devDependencies": {
-    "np": "^7.6.2"
+    "luxon": "^3.3.0"
   },
   "repository": {
     "type": "git",
@@ -29,8 +28,8 @@
     "url": "http://github.com/kernie66/homebridge-pushcutter/issues"
   },
   "engines": {
-    "node": "^16.17.0",
-    "homebridge": "^1.5.0"
+    "node": ">=18.15.0",
+    "homebridge": ">=1.6.0"
   },
   "scripts": {
     "test": "echo \"No test specified\""
