@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.1.4
+
+### Fixes
+
+- Removed external dependencies for URL checks. These caused install problem or long install times.
+- Using built-in URL instead.
+
+### Bump dependencies
+
+- Node v18.15.0 LTS
+- Homebridge v1.6.0
+- homebridge-lib v6.3.12
+- luxon v3.3.0
+- events v3.3.0
+
 ## 1.1.3
 
 ### Enhancements
